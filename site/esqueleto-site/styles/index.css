@@ -1,0 +1,21 @@
+.img-container {
+  float: right;
+  margin-left: 100px;
+}
+
+.img-container > img{
+  height: 800px;
+  width: 800px;
+  background-position: center;
+}
+
+footer {
+  background-color: #4da045;
+  padding: 20px;
+  margin-top: 50%;
+  position: absolute;
+}
+
+.middle {
+  background-color: #4da045;
+}

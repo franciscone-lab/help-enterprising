@@ -25,8 +25,8 @@ module.exports = {
   // Insira aqui seus dados do banco LOCAL - MySQL Workbench
   dev: {
     // altere APENAS username, password e database.
-    username: 'user_api_help_enterpising',
-    password: 'help1234',
+    username: 'root',
+    password: 'fapamajo1120',
     database: 'help_enterprising',
     host: 'localhost',
     dialect: 'mysql',

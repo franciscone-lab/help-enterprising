@@ -17,7 +17,6 @@ h1 {
 }
 
 .card-form-cadastro input {
-  display: flex;
   align-items: center;
   width: 100%;
   font-size: 25px;  

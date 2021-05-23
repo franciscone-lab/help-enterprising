@@ -29,82 +29,81 @@
   </header>
   <main>
     <div class="contato">
-      <div class="container">
-        <div class="formulario">
-          <form id="form_cadastro" method="post" onsubmit="return cadastrar()">
-            <div class="card-form-cadastro">
-              Login
-              <input type="text" name="login" class="input-padrao" placeholder="seu nome de usuário" required
-                minlength="4">
+      <div class="formulario">
+        <form id="form_cadastro" method="post" onsubmit="return cadastrar()">
 
-              Senha
-              <input type="password" name="senha" class="input-padrao" placeholder="***************" required
-                minlength="4">
+          <div id="cadastro_login" class="card-form-cadastro">
+            usuário
+            <input type="text" name="login" class="input-padrao" placeholder="seu nome de usuário" required
+              minlength="4">
 
-                <input type="submit" id="btn_entrar" value="Próximo" class="btn-green">
-            </div>
-            <div class="card-form-cadastro">
-              Nome completo
-              <input type="text" name="nome" class="input-padrao" autofocus="autofocus" placeholder="Nome e sobrenome"
-                required minlength="4">
+            Senha
+            <input type="password" name="senha" class="input-padrao" placeholder="***************" required
+              minlength="4">
 
-              CPF
-              <input type="text" name="nome" class="input-padrao" autofocus="autofocus" placeholder="Nome e sobrenome"
-                required minlength="4">
+            <input type="submit" onclick="redirecionaformDados()" id="btn_entrar" value="Próximo" class="btn-green">
+            <!-- <a href="" onclick="">Próximo</a> -->
+          </div>
 
-              Email
-              <input type="text" name="nome" class="input-padrao" autofocus="autofocus" placeholder="Nome e sobrenome"
-                required minlength="4">
+          <div id="cadastro_dados" class="card-form-cadastro" style="display: none;">
+            Nome completo
+            <input type="text" name="nome" class="input-padrao" autofocus="autofocus" placeholder="Nome e sobrenome"
+              required minlength="4">
 
-              Cargo
-              <input type="text" name="nome" class="input-padrao" autofocus="autofocus" placeholder="Nome e sobrenome"
-                required minlength="4">
+            CPF
+            <input type="text" name="nome" class="input-padrao" autofocus="autofocus" placeholder="Nome e sobrenome"
+              required minlength="4">
 
-              Sexo
-              <input type="text" name="nome" class="input-padrao" autofocus="autofocus" placeholder="Nome e sobrenome">
+            Email
+            <input type="text" name="nome" class="input-padrao" autofocus="autofocus" placeholder="Nome e sobrenome"
+              required minlength="4">
 
-              DDD
-              <input type="text" name="nome" class="input-padrao" autofocus="autofocus" placeholder="Nome e sobrenome">
+            Cargo
+            <input type="text" name="nome" class="input-padrao" autofocus="autofocus" placeholder="Nome e sobrenome"
+              required minlength="4">
 
-              Celular
-              <input type="text" name="nome" class="input-padrao" autofocus="autofocus" placeholder="Nome e sobrenome">
+            Sexo
+            <input type="text" name="nome" class="input-padrao" autofocus="autofocus" placeholder="Nome e sobrenome">
 
-              <input type="submit" id="btn_entrar" value="Próximo" class="btn-green">
-            </div>
-            <div class="card-form-cadastro">
-              CNPJ
-              <input type="text" name="nome" class="input-padrao" autofocus="autofocus" placeholder="Nome e sobrenome">
+            DDD
+            <input type="text" name="nome" class="input-padrao" autofocus="autofocus" placeholder="Nome e sobrenome">
 
-              Nome Fantasia
-              <input type="text" name="nome" class="input-padrao" autofocus="autofocus" placeholder="Nome e sobrenome">
+            Celular
+            <input type="text" name="nome" class="input-padrao" autofocus="autofocus" placeholder="Nome e sobrenome">
 
-              Rua
-              <input type="text" name="nome" class="input-padrao" autofocus="autofocus" placeholder="Nome e sobrenome">
+            <input type="submit" onclick="redirecionaformEmpresa()" id="btn_entrar" value="Próximo" class="btn-green">
 
-              Nº Endereço
-              <input type="text" name="nome" class="input-padrao" autofocus="autofocus" placeholder="Nome e sobrenome">
+          </div>
 
-              CEP
-              <input type="text" name="nome" class="input-padrao" autofocus="autofocus" placeholder="Nome e sobrenome">
+          <div id="cadastro_empresa" class="card-form-cadastro" style="display: none;">
+            CNPJ
+            <input type="text" name="nome" class="input-padrao" autofocus="autofocus" placeholder="Nome e sobrenome">
 
-              Complemento
-              <input type="text" name="nome" class="input-padrao" autofocus="autofocus" placeholder="Nome e sobrenome">
+            Nome Fantasia
+            <input type="text" name="nome" class="input-padrao" autofocus="autofocus" placeholder="Nome e sobrenome">
 
-              <input type="submit" id="btn_entrar" value="Cadastrar" class="btn-green">
-            </div>
+            Rua
+            <input type="text" name="nome" class="input-padrao" autofocus="autofocus" placeholder="Nome e sobrenome">
 
-          </form>
-<!-- 
-          <img src="aguarde-orange.gif" id="img_aguarde" style="display: none; width:100px">
+            Nº Endereço
+            <input type="text" name="nome" class="input-padrao" autofocus="autofocus" placeholder="Nome e sobrenome">
 
-          <div id="div_erro" style="background-color: sandybrown; color: maroon; display: none;">
-            Erro no cadastro
-          </div> -->
+            CEP
+            <input type="text" name="nome" class="input-padrao" autofocus="autofocus" placeholder="Nome e sobrenome">
 
+            Complemento
+            <input type="text" name="nome" class="input-padrao" autofocus="autofocus" placeholder="Nome e sobrenome">
+
+            <input type="submit" id="btn_entrar" value="Cadastrar" class="btn-green">
+          </div>
+
+        </form>
+
+        <img src="aguarde-orange.gif" id="img_aguarde" style="display: none; width:100px">
+
+        <div id="div_erro" style="background-color: sandybrown; color: maroon; display: none;">
+          Erro no cadastro
         </div>
-        <!-- <div class="imagem-lateral">
-          <img src="img/side-img-contato_orange.jpg">
-        </div> -->
       </div>
     </div>
   </main>
@@ -116,3 +115,53 @@
 </body>
 
 </html>
+
+<script>
+  function redirecionaformDados() {
+    cadastro_login.style.display = 'none';
+    cadastro_dados.style.display = 'block';
+  }
+
+  function redirecionaformEmpresa() {
+    cadastro_dados.style.display = 'none';
+    cadastro_empresa.style.display = 'block';
+  }
+
+  function cadastrar() {
+    aguardar();
+    var formulario = new URLSearchParams(new FormData(form_cadastro));
+    fetch("/usuarios/cadastrar", {
+      method: "POST",
+      body: formulario
+    }).then(function (response) {
+
+      if (response.ok) {
+
+        window.location.href = 'login.html';
+
+      } else {
+
+        console.log('Erro de cadastro!');
+        response.text().then(function (resposta) {
+          div_erro.innerHTML = resposta;
+        });
+        finalizar_aguardar();
+      }
+    });
+
+    return false;
+  }
+
+  function aguardar() {
+    btn_entrar.disabled = true;
+    img_aguarde.style.display = 'block';
+    div_erro.style.display = 'none';
+  }
+
+  function finalizar_aguardar() {
+    btn_entrar.disabled = false;
+    img_aguarde.style.display = 'none';
+    div_erro.style.display = 'block';
+  }
+
+</script>

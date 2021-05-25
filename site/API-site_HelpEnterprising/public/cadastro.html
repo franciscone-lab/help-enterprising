@@ -5,65 +5,53 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projeto IoT - Sobre</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/navbar.css">
+    <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="./css/footer.css">
     <link rel="stylesheet" href="css/contato-e-login.css">
 </head>
 
 <body>
-    <!--header inicio-->
-    <div class="header">
-        <div class="container">
-            <h1 class="titulo"><span class="highlight">Projeto</span> IoT Revolucionário</h1>
-            <div class="nav">
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="sobre.html">Sobre</a></li>
-                    <li><a href="" class="current">Cadastro</a></li>
-                    <li><a href="login.html">Login</a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
-    <!--header fim-->
+    <nav>
+        <ul>
+            <li style="float:left"><a class="home" href="index.html">HELP ENTERPRISING</a></li>
+            <li><a href="login.html">Login</a></li>
+            <li><a href="cadastro.html">Cadastre-se</a></li>
+            <li><a href="sobre.html">Sobre nós</a></li>
+        </ul>
+    </nav>
 
     <div class="contato">
         <div class="container">
             <h1>Faça aqui seu cadastro!</h1>
             <div class="formulario">
-                <form id="formCadastroLogin" method="post" onsubmit="return cadastrarLogin()">
+                <form id="formCadastroUsuario" method="post" onsubmit="return cadastrarUsuario()">
                     Nome completo
-                    <input type="text" name="usuarioLogin" class="input-padrao" autofocus="autofocus"
+                    <input type="text" name="nomeUsuario" class="input-padrao" autofocus="autofocus"
                         placeholder="Nome e sobrenome" required minlength="4">
 
+                    Login
+                    <input type="text" name="loginUsuario" class="input-padrao" autofocus="autofocus"
+                        placeholder="Login" required minlength="4">
+
                     Senha
-                    <input type="password" name="senhaLogin" class="input-padrao" placeholder="***************" required
-                        minlength="4">
+                    <input type="password" name="senhaUsuario" class="input-padrao" placeholder="***************"
+                        required minlength="4">
+
+                    CPF
+                    <input type="text" name="cpfUsuario" class="input-padrao" autofocus="autofocus"
+                        placeholder="Nome e sobrenome" required minlength="4">
+
+                    Email
+                    <input type="text" name="emailUsuario" class="input-padrao" autofocus="autofocus"
+                        placeholder="Nome e sobrenome" required minlength="4">
+
+                    Sexo
+                    <input type="text" name="sexoUsuario" class="input-padrao" autofocus="autofocus"
+                        placeholder="Nome e sobrenome" required>
 
                     <input type="submit" id="btn_entrar" value="Cadastrar" class="btn-green">
-                </form>
-
-                <form id="formCadastroUsuario" method="post" onsubmit="return cadastrarUsuario()" style="display: none;">
-                        Nome completo
-                        <input type="text" name="nomeUsuario" class="input-padrao" autofocus="autofocus"
-                            placeholder="Nome e sobrenome" required minlength="4">
-
-                        CPF
-                        <input type="text" name="cpfUsuario" class="input-padrao" autofocus="autofocus"
-                            placeholder="Nome e sobrenome" required minlength="4">
-
-                        Email
-                        <input type="text" name="emailUsuario" class="input-padrao" autofocus="autofocus"
-                            placeholder="Nome e sobrenome" required minlength="4">
-
-                        Cargo na empresa
-                        <input type="text" name="cargoUsuario" class="input-padrao" autofocus="autofocus"
-                            placeholder="Nome e sobrenome" required minlength="4">
-
-                        Sexo
-                        <input type="text" name="sexoUsuario" class="input-padrao" autofocus="autofocus"
-                            placeholder="Nome e sobrenome" required>
-
-                        <input type="submit" id="btn_entrar" value="Cadastrar" class="btn-green">
                 </form>
 
                 <!-- <img src="aguarde-orange.gif" id="img_aguarde" style="display: none; width:100px">
@@ -94,20 +82,17 @@
 
 <script>
 
-    function cadastrarLogin() {
+    function cadastrarUsuario() {
         // aguardar();
-        var formulario = new URLSearchParams(new FormData(formCadastroLogin));
-        fetch("/usuarios/login", {
+        var formulario = new URLSearchParams(new FormData(formCadastroUsuario));
+        fetch("/usuarios/usuario", {
             method: "POST",
             body: formulario
         }).then(function (response) {
 
             if (response.ok) {
 
-                // window.location.href = 'login.html';
-                formCadastroLogin.style.display = 'none';
-                formCadastroUsuario.style.display = 'block';
-
+                window.location.href = 'cadastrar-empresa.html';
 
             } else {
 
@@ -122,30 +107,25 @@
         return false;
     }
 
-    function cadastrarUsuario() {
-        var formularioUsuario = new URLSearchParams(new FormData(formCadastroUsuario));
-        fetch("/usuarios/dados", {
-            method: "POST",
-            body: formularioUsuario
-        }).then(function (response) {
-
-            if (response.ok) {
-
-                window.location.href = 'login.html';
-                // formCadastroLogin.style.display = 'none';
-                // formCadastroUsuario.style.display = 'block';
-
-
-            } else {
-
-                console.log('Erro de cadastro!');
-                response.text().then(function (resposta) {
-                    div_erro.innerHTML = resposta;
+    function consultar() {
+        aguardar();
+        var formulario = new URLSearchParams(new FormData(form_cadastro));
+        fetch("/usuarios/autenticar", {
+            method: "POST", body: formulario
+        }).then(resposta => {
+            if (resposta.ok) {
+                resposta.json().then(json => {
+                    sessionStorage.login_usuario_meuapp = json.login;
+                    sessionStorage.nome_usuario_meuapp = json.nome;
+                    sessionStorage.id_usuario_meuapp = json.id; window.location.href = 'tempo-real.html';
                 });
-                // finalizar_aguardar();
+            } else {
+                console.log('Erro de login!');
+                resposta.text().then(texto => {
+                    console.error(texto); finalizar_aguardar(texto);
+                });
             }
         });
-
         return false;
     }
 

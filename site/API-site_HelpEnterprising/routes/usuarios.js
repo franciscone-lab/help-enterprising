@@ -1,21 +1,19 @@
 var express = require('express');
 var router = express.Router();
 var sequelize = require('../models').sequelize;
-var Login = require('../models').Login;
 var Usuario = require('../models').Usuario;
+var Empresa = require('../models').Empresa;
 
 let sessoes = [];
-
-let fkLogin = 0;
 
 /* Recuperar usuário por login e senha */
 router.post('/autenticar', function (req, res, next) {
 	console.log('Recuperando usuário por login e senha');
 
-	var login = req.body.login; // depois de .body, use o nome (name) do campo em seu formulário de login
-	var senha = req.body.senha; // depois de .body, use o nome (name) do campo em seu formulário de login	
+	var login = req.body.loginUsuario; // depois de .body, use o nome (name) do campo em seu formulário de login
+	var senha = req.body.senhaUsuario; // depois de .body, use o nome (name) do campo em seu formulário de login	
 
-	let instrucaoSql = `select * from usuario where login='${login}' and senha='${senha}'`;
+	let instrucaoSql = `select * from usuario where loginUsuario='${login}' and senhaUsuario='${senha}'`;
 	console.log(instrucaoSql);
 
 	sequelize.query(instrucaoSql, {
@@ -39,49 +37,20 @@ router.post('/autenticar', function (req, res, next) {
 	});
 });
 
-/* Cadastrar loginUsuario */
-router.post('/login', function (req, res, next) {
+/* Cadastrar Usuário */
+router.post('/usuario', function (req, res, next) {
 	console.log('Criando um usuário');
 
-	Login.create({
-		usuarioLogin: req.body.usuarioLogin,
-		senhaLogin: req.body.senhaLogin
-
-	}).then(resultado => {
-		// var userLogin = req.body.usuarioLogin;
-		// var senhaLogin = req.body.senhaLogin;
-		// fkLogin = `SELECT idLogin FROM login WHERE usuarioLogin = '${userLogin}' and senhaLogin = '${senhaLogin}'`;
-
-		fkLogin++;
-		console.log(`Registro de usuário criado: ${resultado}`)
-		console.log(fkLogin);
-		res.send(resultado);
-	}).catch(erro => {
-		console.error(erro);
-		res.status(500).send(erro.message);
-	});
-});
-
-
-
-
-/* Cadastrar dados do usuário */
-router.post('/dados', function (req, res, next) {
-	console.log('Adicionando os dados do usuário');
-
-	// var listaFkLogin = `SELECT id FROM login WHERE usuarioLogin = '${userLogin}' and senhaLogin = '${senhaLogin}'`;
-
-
 	Usuario.create({
+		loginUsuario: req.body.loginUsuario,
+		senhaUsuario: req.body.senhaUsuario,
 		nomeUsuario: req.body.nomeUsuario,
 		cpfUsuario: req.body.cpfUsuario,
 		emailUsuario: req.body.emailUsuario,
-		cargoUsuario: req.body.cargoUsuario,
 		sexoUsuario: req.body.sexoUsuario,
-		fkLogin: `${fkLogin}`
 
 	}).then(resultado => {
-		console.log(`Registro de dados do usuário criado: ${resultado}`)
+		console.log(`Registro de usuário criado: ${resultado}`)
 		res.send(resultado);
 	}).catch(erro => {
 		console.error(erro);
@@ -89,6 +58,25 @@ router.post('/dados', function (req, res, next) {
 	});
 });
 
+/*Cadastra uma empresa */
+router.post('/empresa/:idUsuario', function (req, res, next) {
+	console.log('iniciou o cadastro da empresa');
+
+	let idUsuario = req.params.idUsuario;
+
+	Empresa.create({
+		cnpjEmpresa: req.body.cnpjEmpresa,
+		nomeFantasiaEmpresa: req.body.nomeFantasiaEmpresa,
+		fkUsuario: idUsuario
+	}).then(resultado => {
+		console.log("Empresa cadastrada com sucesso!");
+		res.send(resultado);
+	}).catch(erro => {
+		console.log('DEU UM ERRINHO')
+		console.error(erro);
+		res.status(500).send(erro.message);
+	})
+})
 
 /* Verificação de usuário */
 router.get('/sessao/:login', function (req, res, next) {

@@ -1,21 +1,14 @@
 CREATE DATABASE help_enterprising;
 USE help_enterprising;
 
-CREATE TABLE login (
-idLogin INT PRIMARY KEY AUTO_INCREMENT,
-usuarioLogin VARCHAR(20),
-senhaLogin VARCHAR(8)
-);
-
 CREATE TABLE usuario (
 idUsuario INT PRIMARY KEY AUTO_INCREMENT,
+loginUsuario VARCHAR(20),
+senhaUsuario VARCHAR(8),
 nomeUsuario VARCHAR(45),
 cpfUsuario CHAR(11),
 emailUsuario VARCHAR(45),
-cargoUsuario VARCHAR(45),
-sexoUsuario CHAR(1) CHECK (sexoUsuario = 'M' OR sexoUsuario = 'F' OR sexoUsuario = 'N'),
-fkLogin INT,
-FOREIGN KEY(fkLogin) REFERENCES login(idLogin)
+sexoUsuario CHAR(1) CHECK (sexoUsuario = 'M' OR sexoUsuario = 'F' OR sexoUsuario = 'N')
 );
 
 CREATE TABLE telefone (

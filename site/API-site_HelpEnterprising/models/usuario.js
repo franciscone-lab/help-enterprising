@@ -13,6 +13,18 @@ module.exports = (sequelize, DataTypes) => {
 			autoIncrement: true
 		},
 
+		loginUsuario: {
+			field: 'loginUsuario',
+			type: DataTypes.STRING,
+			allowNull: false
+		},
+
+		senhaUsuario: {
+			field: 'senhaUsuario',
+			type: DataTypes.STRING,
+			allowNull: false
+		},
+
 		nomeUsuario: {
 			field: 'nomeUsuario',
 			type: DataTypes.STRING,
@@ -30,25 +42,12 @@ module.exports = (sequelize, DataTypes) => {
 			type: DataTypes.STRING,
 			allowNull: false
 		},
-
-		cargoUsuario: {
-			field: 'cargoUsuario',
-			type: DataTypes.STRING,
-			allowNull: false
-		},
-
+		
 		sexoUsuario: {
 			field: 'sexoUsuario',
 			type: DataTypes.STRING,
 			allowNull: false
-		},
-
-		fkLogin: {
-			field: 'fkLogin',
-			type: DataTypes.STRING,
-			foreignKey: true,
-			allowNull: false
-		},
+		}
 
 	},
 		{
@@ -57,7 +56,6 @@ module.exports = (sequelize, DataTypes) => {
 			underscored: true,
 			timestamps: false,
 		});
-
-
+		
 	return Usuario;
 };

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cadastro Empresa | Help Enterprising</title>
+</head>
+
+<body>
+  <form id="formCadastroEmpresa" onsubmit="return cadastrarEmpresa()" method="post">
+    <div class="card-form-cadastro">
+      CNPJ
+      <input type="text" name="cnpjEmpresa" class="input-padrao" autofocus="autofocus" placeholder="Nome e sobrenome">
+
+      Nome Fantasia
+      <input type="text" name="nomeFantasiaEmpresa" class="input-padrao" autofocus="autofocus"
+        placeholder="Nome e sobrenome">
+
+      <!-- Rua
+      <input type="text" name="ruaEndereco" class="input-padrao" autofocus="autofocus" placeholder="Nome e sobrenome">
+
+      Nº Endereço
+      <input type="text" name="numeroEndereco" class="input-padrao" autofocus="autofocus" placeholder="Nome e sobrenome">
+
+      CEP
+      <input type="text" name="cepEndereco" class="input-padrao" autofocus="autofocus" placeholder="Nome e sobrenome">
+
+      Complemento
+      <input type="text" name="complementoEndereco" class="input-padrao" autofocus="autofocus" placeholder="Nome e sobrenome"> -->
+
+      <input type="submit" id="btn_entrar" value="Cadastrar" class="btn-green">
+    </div>
+  </form>
+</body>
+
+</html>
+
+<script>
+  function cadastrarEmpresa() {
+    // aguardar();
+    console.log("Entrei na function!")
+    var formularioEmpresa = new URLSearchParams(new FormData(formCadastroEmpresa));
+    var idUsuario = sessionStorage.id_usuario_meuapp;
+    fetch(`/usuarios/empresa/${idUsuario}`, {
+      method: "POST",
+      body: formularioEmpresa
+    }).then(function (response) {
+
+      if (response.ok) {
+
+        window.location.href = './home.html';
+        
+      } else {  
+
+        console.log('Erro de cadastro da empresa!');
+        response.text().then(function (resposta) {
+          div_erro.innerHTML = resposta;
+        });
+        // finalizar_aguardar();
+      }
+    });
+
+    return false;
+  }
+</script>

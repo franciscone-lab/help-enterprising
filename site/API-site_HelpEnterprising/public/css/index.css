@@ -1,0 +1,30 @@
+header {
+  margin-top: 70px;
+  font-size: 30px;
+  text-align: center;
+  color: #4da045;
+}
+
+.img-container {
+  float: right;
+  margin-left: 100px;
+}
+
+.img-container > img{
+  height: 800px;
+  width: 800px;
+  background-position: center;
+}
+
+main .text {
+  padding: 100px;
+  text-align: center;
+}
+
+main .text p {
+  margin-top: 100px;
+  font-size: 25px;
+}
+
+
+

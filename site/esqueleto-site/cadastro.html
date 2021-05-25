@@ -1,0 +1,167 @@
+<!-- TODO -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles/style.css">
+  <link rel="stylesheet" href="styles/navbar.css">
+  <link rel="stylesheet" href="styles/cadastro.css">
+  <link rel="stylesheet" href="styles/footer.css">
+
+  <link rel="shortcut icon" href="img/target.ico" type="image/x-icon">
+  <title>Sobre | Help Enterprising</title>
+</head>
+
+<body>
+  <nav>
+    <ul>
+      <li style="float:left"><a class="home" href="index.html">HELP ENTERPRISING</a></li>
+      <li><a href="sobre.html">Login</a></li>
+      <li><a href="cadastro.html">Cadastre-se</a></li>
+      <li><a href="sobre.html">Sobre nós</a></li>
+    </ul>
+  </nav>
+  <header>
+    <h1>Junte-se a essa revolução!</h1>
+  </header>
+  <main>
+    <div class="contato">
+      <div class="formulario">
+        <form id="form_cadastro" method="post" onsubmit="return cadastrar()">
+
+          <div id="cadastro_login" class="card-form-cadastro">
+            usuário
+            <input type="text" name="login" class="input-padrao" placeholder="seu nome de usuário" required
+              minlength="4">
+
+            Senha
+            <input type="password" name="senha" class="input-padrao" placeholder="***************" required
+              minlength="4">
+
+            <input type="submit" onclick="redirecionaformDados()" id="btn_entrar" value="Próximo" class="btn-green">
+            <!-- <a href="" onclick="">Próximo</a> -->
+          </div>
+
+          <div id="cadastro_dados" class="card-form-cadastro" style="display: none;">
+            Nome completo
+            <input type="text" name="nome" class="input-padrao" autofocus="autofocus" placeholder="Nome e sobrenome"
+              required minlength="4">
+
+            CPF
+            <input type="text" name="nome" class="input-padrao" autofocus="autofocus" placeholder="Nome e sobrenome"
+              required minlength="4">
+
+            Email
+            <input type="text" name="nome" class="input-padrao" autofocus="autofocus" placeholder="Nome e sobrenome"
+              required minlength="4">
+
+            Cargo
+            <input type="text" name="nome" class="input-padrao" autofocus="autofocus" placeholder="Nome e sobrenome"
+              required minlength="4">
+
+            Sexo
+            <input type="text" name="nome" class="input-padrao" autofocus="autofocus" placeholder="Nome e sobrenome">
+
+            DDD
+            <input type="text" name="nome" class="input-padrao" autofocus="autofocus" placeholder="Nome e sobrenome">
+
+            Celular
+            <input type="text" name="nome" class="input-padrao" autofocus="autofocus" placeholder="Nome e sobrenome">
+
+            <input type="submit" onclick="redirecionaformEmpresa()" id="btn_entrar" value="Próximo" class="btn-green">
+
+          </div>
+
+          <div id="cadastro_empresa" class="card-form-cadastro" style="display: none;">
+            CNPJ
+            <input type="text" name="nome" class="input-padrao" autofocus="autofocus" placeholder="Nome e sobrenome">
+
+            Nome Fantasia
+            <input type="text" name="nome" class="input-padrao" autofocus="autofocus" placeholder="Nome e sobrenome">
+
+            Rua
+            <input type="text" name="nome" class="input-padrao" autofocus="autofocus" placeholder="Nome e sobrenome">
+
+            Nº Endereço
+            <input type="text" name="nome" class="input-padrao" autofocus="autofocus" placeholder="Nome e sobrenome">
+
+            CEP
+            <input type="text" name="nome" class="input-padrao" autofocus="autofocus" placeholder="Nome e sobrenome">
+
+            Complemento
+            <input type="text" name="nome" class="input-padrao" autofocus="autofocus" placeholder="Nome e sobrenome">
+
+            <input type="submit" id="btn_entrar" value="Cadastrar" class="btn-green">
+          </div>
+
+        </form>
+
+        <img src="aguarde-orange.gif" id="img_aguarde" style="display: none; width:100px">
+
+        <div id="div_erro" style="background-color: sandybrown; color: maroon; display: none;">
+          Erro no cadastro
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <h3>Developed by <a href="https://github.com/franciscone-facul" target="_blank">Matheus Franciscone</a>, um aluno <a
+        href="http://https://github.com/BandTec" target="_blank">BandTec!</a> &#128516;</h3>
+  </footer>
+</body>
+
+</html>
+
+<script>
+  function redirecionaformDados() {
+    cadastro_login.style.display = 'none';
+    cadastro_dados.style.display = 'block';
+  }
+
+  function redirecionaformEmpresa() {
+    cadastro_dados.style.display = 'none';
+    cadastro_empresa.style.display = 'block';
+  }
+
+  function cadastrar() {
+    aguardar();
+    var formulario = new URLSearchParams(new FormData(form_cadastro));
+    fetch("/usuarios/cadastrar", {
+      method: "POST",
+      body: formulario
+    }).then(function (response) {
+
+      if (response.ok) {
+
+        window.location.href = 'login.html';
+
+      } else {
+
+        console.log('Erro de cadastro!');
+        response.text().then(function (resposta) {
+          div_erro.innerHTML = resposta;
+        });
+        finalizar_aguardar();
+      }
+    });
+
+    return false;
+  }
+
+  function aguardar() {
+    btn_entrar.disabled = true;
+    img_aguarde.style.display = 'block';
+    div_erro.style.display = 'none';
+  }
+
+  function finalizar_aguardar() {
+    btn_entrar.disabled = false;
+    img_aguarde.style.display = 'none';
+    div_erro.style.display = 'block';
+  }
+
+</script>

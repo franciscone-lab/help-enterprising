@@ -1,0 +1,15 @@
+footer {
+  background-color: #4da045;
+  padding: 20px;
+  margin-top: 105px;
+  top: 0;
+}
+
+footer a {
+  color: white;
+  text-decoration: none;
+}
+
+footer a:hover {
+  color: #000000
+}

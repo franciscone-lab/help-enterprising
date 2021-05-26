@@ -1,15 +1,18 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projeto IoT - Sobre</title>
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/navbar.css">
     <link rel="stylesheet" href="./css/index.css">
     <link rel="stylesheet" href="./css/footer.css">
-    <link rel="stylesheet" href="css/contato-e-login.css">
+    <link rel="stylesheet" href="./css/contato-e-login.css">
+
+    <link rel="shortcut icon" href="./img/target.ico" type="image/x-icon">
+    <title>Cadastrp | Help Enterprising</title>
 </head>
 
 <body>
@@ -21,11 +24,10 @@
             <li><a href="sobre.html">Sobre nós</a></li>
         </ul>
     </nav>
-
-    <div class="contato">
+    <div class="pag-login">
         <div class="container">
-            <h1>Faça aqui seu cadastro!</h1>
-            <div class="formulario">
+            <div class="box-login">
+                <h1>Faça aqui seu cadastro!</h1>
                 <form id="formCadastroUsuario" method="post" onsubmit="return cadastrarUsuario()">
                     Nome completo
                     <input type="text" name="nomeUsuario" class="input-padrao" autofocus="autofocus"
@@ -34,48 +36,41 @@
                     Login
                     <input type="text" name="loginUsuario" class="input-padrao" autofocus="autofocus"
                         placeholder="Login" required minlength="4">
-
+                    <br>
                     Senha
                     <input type="password" name="senhaUsuario" class="input-padrao" placeholder="***************"
                         required minlength="4">
-
+                    <br>
                     CPF
                     <input type="text" name="cpfUsuario" class="input-padrao" autofocus="autofocus"
                         placeholder="Nome e sobrenome" required minlength="4">
-
+                    <br>
                     Email
                     <input type="text" name="emailUsuario" class="input-padrao" autofocus="autofocus"
                         placeholder="Nome e sobrenome" required minlength="4">
-
+                    <br>
                     Sexo
                     <input type="text" name="sexoUsuario" class="input-padrao" autofocus="autofocus"
                         placeholder="Nome e sobrenome" required>
 
                     <input type="submit" id="btn_entrar" value="Cadastrar" class="btn-green">
+                    <br>
                 </form>
+            </div>
 
-                <!-- <img src="aguarde-orange.gif" id="img_aguarde" style="display: none; width:100px">
+            <!-- <img src="aguarde-orange.gif" id="img_aguarde" style="display: none; width:100px">
 
                 <div id="div_erro" style="background-color: sandybrown; color: maroon; display: none;">
                     Erro no cadastro
                 </div> -->
 
-            </div>
-            <div class="imagem-lateral">
-                <img src="img/side-img-contato_orange.jpg">
-            </div>
         </div>
+
     </div>
-
-
-
-    <!--footer inicio-->
-    <div class="footer">
-        <div class="container">
-            <h4>Feito com carinho por um aluno BandTec. Copyright © 2021</h4>
-        </div>
-    </div>
-    <!--footer fim-->
+    <footer>
+        <h3>Developed by <a href="https://github.com/franciscone-facul" target="_blank">Matheus Franciscone</a>, um
+            aluno <a href="http://https://github.com/BandTec" target="_blank">BandTec!</a> &#128516;</h3>
+    </footer>
 </body>
 
 </html>
@@ -92,7 +87,7 @@
 
             if (response.ok) {
 
-                window.location.href = 'cadastrar-empresa.html';
+                window.location.href = 'login.html';
 
             } else {
 
@@ -104,28 +99,6 @@
             }
         });
 
-        return false;
-    }
-
-    function consultar() {
-        aguardar();
-        var formulario = new URLSearchParams(new FormData(form_cadastro));
-        fetch("/usuarios/autenticar", {
-            method: "POST", body: formulario
-        }).then(resposta => {
-            if (resposta.ok) {
-                resposta.json().then(json => {
-                    sessionStorage.login_usuario_meuapp = json.login;
-                    sessionStorage.nome_usuario_meuapp = json.nome;
-                    sessionStorage.id_usuario_meuapp = json.id; window.location.href = 'tempo-real.html';
-                });
-            } else {
-                console.log('Erro de login!');
-                resposta.text().then(texto => {
-                    console.error(texto); finalizar_aguardar(texto);
-                });
-            }
-        });
         return false;
     }
 

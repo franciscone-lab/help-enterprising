@@ -2,11 +2,12 @@ var express = require('express');
 var router = express.Router();
 var sequelize = require('../models').sequelize;
 var Usuario = require('../models').Usuario;
-var Empresa = require('../models').Empresa;
+var faleConosco = require('../models').faleConosco;
+var Telefone = require('../models').Telefone;
 
 let sessoes = [];
 
-/* Recuperar usuário por login e senha */
+/* ROTA PARA RECUPERAR DADOS DE LOGIN E SENHA (CRIA SESSÃO) */
 router.post('/autenticar', function (req, res, next) {
 	console.log('Recuperando usuário por login e senha');
 
@@ -37,7 +38,7 @@ router.post('/autenticar', function (req, res, next) {
 	});
 });
 
-/* Cadastrar Usuário */
+/* ROTA QUE CADASTRO O USUÁRIO */
 router.post('/usuario', function (req, res, next) {
 	console.log('Criando um usuário');
 
@@ -58,18 +59,18 @@ router.post('/usuario', function (req, res, next) {
 	});
 });
 
-/*Cadastra uma empresa */
-router.post('/empresa/:idUsuario', function (req, res, next) {
-	console.log('iniciou o cadastro da empresa');
+/* ROTA PARA CADASTRO DE TELEFONE */
+router.post('/telefone/:idUsuario', function (req, res, next) {
+	console.log('iniciou o cadastro do telefone');
 
 	let idUsuario = req.params.idUsuario;
 
-	Empresa.create({
-		cnpjEmpresa: req.body.cnpjEmpresa,
-		nomeFantasiaEmpresa: req.body.nomeFantasiaEmpresa,
+	Telefone.create({
+		dddTelefone: req.body.dddTelefone,
+		numeroTelefone: req.body.numeroTelefone,
 		fkUsuario: idUsuario
 	}).then(resultado => {
-		console.log("Empresa cadastrada com sucesso!");
+		console.log("TELEFONE cadastrado com sucesso!");
 		res.send(resultado);
 	}).catch(erro => {
 		console.log('DEU UM ERRINHO')
@@ -78,9 +79,29 @@ router.post('/empresa/:idUsuario', function (req, res, next) {
 	})
 })
 
-/* Verificação de usuário */
-router.get('/sessao/:login', function (req, res, next) {
-	let login = req.params.login;
+/* ROTA CADASTRO DE HELP DESK */
+router.post('/ajuda/:idUsuario', function (req, res, next) {
+	console.log('iniciou o cadastro do ajuda!');
+
+	let idUsuario = req.params.idUsuario;
+
+	faleConosco.create({
+		tituloFaleConosco: req.body.tituloFaleConosco,
+		duvidaFaleConosco: req.body.duvidaFaleConosco,
+		fkUsuario: idUsuario
+	}).then(resultado => {
+		console.log("Dúvida cadastrada com sucesso!");
+		res.send(resultado);
+	}).catch(erro => {
+		console.log('DEU UM ERRINHO')
+		console.error(erro);
+		res.status(500).send(erro.message);
+	})
+})
+
+/* ROTA QUE VERIFICAÇÃO DE USUÁRIO (CRIAR SESSÃO) */
+router.get('/sessao/:loginUsuario', function (req, res, next) {
+	let login = req.params.loginUsuario;
 	console.log(`Verificando se o usuário ${login} tem sessão`);
 
 	let tem_sessao = false;
@@ -102,9 +123,9 @@ router.get('/sessao/:login', function (req, res, next) {
 });
 
 
-/* Logoff de usuário */
-router.get('/sair/:login', function (req, res, next) {
-	let login = req.params.login;
+/* ROTA DE LOGOFF DE USUÁRIO */
+router.get('/sair/:loginUsuario', function (req, res, next) {
+	let login = req.params.loginUsuario;
 	console.log(`Finalizando a sessão do usuário ${login}`);
 	let nova_sessoes = []
 	for (let u = 0; u < sessoes.length; u++) {
@@ -117,7 +138,7 @@ router.get('/sair/:login', function (req, res, next) {
 });
 
 
-/* Recuperar todos os usuários */
+/* ROTA QUE RECUPERAR TODOS OS USUÁRIOS */
 router.get('/', function (req, res, next) {
 	console.log('Recuperando todos os usuários');
 	Usuario.findAndCountAll().then(resultado => {

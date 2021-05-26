@@ -43,20 +43,21 @@
     console.log("Entrei na function!")
     var formularioEmpresa = new URLSearchParams(new FormData(formCadastroEmpresa));
     var idUsuario = sessionStorage.id_usuario_meuapp;
-    fetch(`/usuarios/empresa/${idUsuario}`, {
+    fetch(`/empresas/empresa/${idUsuario}`, {
       method: "POST",
       body: formularioEmpresa
     }).then(function (response) {
 
       if (response.ok) {
 
-        window.location.href = './home.html';
-        
-      } else {  
+        // window.location.href = './home.html';
+        console.log("OK!");
+
+      } else {
 
         console.log('Erro de cadastro da empresa!');
         response.text().then(function (resposta) {
-          div_erro.innerHTML = resposta;
+          // div_erro.innerHTML = resposta;
         });
         // finalizar_aguardar();
       }

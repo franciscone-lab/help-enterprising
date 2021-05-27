@@ -23,7 +23,7 @@ router.post('/autenticar', function (req, res, next) {
 		console.log(`Encontrados: ${resultado.length}`);
 
 		if (resultado.length == 1) {
-			sessoes.push(resultado[0].dataValues.login);
+			sessoes.push(resultado[0].dataValues.loginUsuario);
 			console.log('sessoes: ', sessoes);
 			res.json(resultado[0]);
 		} else if (resultado.length == 0) {
@@ -38,7 +38,7 @@ router.post('/autenticar', function (req, res, next) {
 	});
 });
 
-/* ROTA QUE CADASTRO O USUÁRIO */
+/* ROTA PARA CADASTRO DE USUÁRIO */
 router.post('/usuario', function (req, res, next) {
 	console.log('Criando um usuário');
 
@@ -122,7 +122,6 @@ router.get('/sessao/:loginUsuario', function (req, res, next) {
 
 });
 
-
 /* ROTA DE LOGOFF DE USUÁRIO */
 router.get('/sair/:loginUsuario', function (req, res, next) {
 	let login = req.params.loginUsuario;
@@ -136,7 +135,6 @@ router.get('/sair/:loginUsuario', function (req, res, next) {
 	sessoes = nova_sessoes;
 	res.send(`Sessão do usuário ${login} finalizada com sucesso!`);
 });
-
 
 /* ROTA QUE RECUPERAR TODOS OS USUÁRIOS */
 router.get('/', function (req, res, next) {

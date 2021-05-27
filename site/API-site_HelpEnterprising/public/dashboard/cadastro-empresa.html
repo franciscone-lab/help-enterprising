@@ -17,21 +17,27 @@
       Nome Fantasia
       <input type="text" name="nomeFantasiaEmpresa" class="input-padrao" autofocus="autofocus"
         placeholder="Nome e sobrenome">
-
-      <!-- Rua
-      <input type="text" name="ruaEndereco" class="input-padrao" autofocus="autofocus" placeholder="Nome e sobrenome">
-
-      Nº Endereço
-      <input type="text" name="numeroEndereco" class="input-padrao" autofocus="autofocus" placeholder="Nome e sobrenome">
-
-      CEP
-      <input type="text" name="cepEndereco" class="input-padrao" autofocus="autofocus" placeholder="Nome e sobrenome">
-
-      Complemento
-      <input type="text" name="complementoEndereco" class="input-padrao" autofocus="autofocus" placeholder="Nome e sobrenome"> -->
-
-      <input type="submit" id="btn_entrar" value="Cadastrar" class="btn-green">
     </div>
+    <input type="submit" id="btn_entrar" value="Cadastrar" class="btn-green">
+  </form>
+
+  <form id="formCadastroEndereco" onsubmit="return cadastrarEndereco()" style="display: none;" method="post">
+    Rua
+    <input type="text" name="ruaEndereco" class="input-padrao" autofocus="autofocus" placeholder="Nome e sobrenome">
+
+    Nº Endereço
+    <input type="text" name="numeroEndereco" class="input-padrao" autofocus="autofocus" placeholder="Nome e sobrenome">
+
+    CEP
+    <input type="text" name="cepEndereco" class="input-padrao" autofocus="autofocus" placeholder="Nome e sobrenome">
+
+    Complemento
+    <input type="text" name="complementoEndereco" class="input-padrao" autofocus="autofocus"
+      placeholder="Nome e sobrenome">
+    <input type="submit" id="btn_entrar" value="Cadastrar" class="btn-green">
+  </form>
+
+  </div>
   </form>
 </body>
 
@@ -50,8 +56,45 @@
 
       if (response.ok) {
 
+        response.json().then(json => {
+
+          sessionStorage.id_empresa_meuapp = json.idEmpresa;
+          console.log("OK!");
+
+          formCadastroEmpresa.style.display = 'none';
+          formCadastroEndereco.style.display = 'block';
+
+        });
         // window.location.href = './home.html';
-        console.log("OK!");
+
+      } else {
+
+        console.log('Erro de cadastro da empresa!');
+        response.text().then(function (resposta) {
+          // div_erro.innerHTML = resposta;
+        });
+        // finalizar_aguardar();
+      }
+    });
+
+    return false;
+  }
+
+  function cadastrarEndereco() {
+    // aguardar();
+    console.log("Entrei na function!")
+    var formularioEndereco = new URLSearchParams(new FormData(formCadastroEndereco));
+    var idEmpresa = sessionStorage.id_empresa_meuapp;
+    fetch(`/empresas/endereco/${idEmpresa}`, {
+      method: "POST",
+      body: formularioEndereco
+    }).then(function (response) {
+
+      if (response.ok) {
+
+          console.log("OK ENDEREÇO!");
+
+        // window.location.href = './home.html';
 
       } else {
 

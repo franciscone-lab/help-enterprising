@@ -54,7 +54,6 @@ router.get('/ultimas/:idmoeda', function(req, res, next) {
 	});
 });
 
-
 router.get('/tempo-real/:idcaminhao', function(req, res, next) {
 	console.log('Recuperando caminhões');
 	

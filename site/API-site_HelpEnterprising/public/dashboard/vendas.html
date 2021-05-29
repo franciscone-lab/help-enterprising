@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vendas | Help Enterprising</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/vendas.css">
+</head>
+
+<body>
+    <nav>
+        <div class="nav-bar">
+            <a href="home.html">Home</a>
+            <a href="cadastro-dados.html">Dados</a>
+            <a href="cadastro-empresa.html">Cadastro de Empresas</a>
+            <a href="publicar-post.html">Publicar</a>
+            <a href="vendas.html">Vendas</a>
+            <a href="ajuda.html">Ajuda</a>
+            <a href="#" onclick="logoff()" class="sair">Sair</a>
+        </div>
+    </nav>
+
+    <div class="vendas">
+        <div class="chart cards">
+            <h1>Cotação Dólar</h1>
+            <div class="graph">
+                <canvas id="myChartLine"></canvas>
+            </div>
+        </div>
+        <div class="calculadora cards">
+            <h1>Registro de Vendas + Nota Fiscal</h1>
+            <br>
+            <label for="input_produto">Produto:</label>
+            <input id="input_produto">
+            <br><br>
+            <label for="input_valor_produto"> Valor:</label>
+            <input type="number" id="input_valor_produto">
+            <br><br>
+            <button onclick="cadastrarVenda()" class="botaovendas">Cadastrar Venda</button>
+            <button onclick="listarVendas()" class="botaovendas">Ver nota Fiscal</button>
+            <button onclick="limparVendas()" class="botaovendas">Limpar Vendas</button>
+            <br><br>
+            <div id="div_nota_fiscal"></div>
+        </div>
+        <div class="chart cards">
+            <h1>Crescimento Empreendedorismo</h1>
+            <div class="dois-graph">
+                <canvas id="myChartBar"></canvas>
+                <canvas id="myChartPizza"></canvas>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+
+</html>
+
+<script src="js/vendas.js"></script>

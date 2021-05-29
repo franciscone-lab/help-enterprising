@@ -1,0 +1,27 @@
+nav{
+  background-color: #016901;
+  height: 60px;
+  border-radius: 0 0 5px 5px;
+}
+
+nav .nav-bar{
+  text-align: center;
+  padding: 1.5%;
+}
+
+nav a {
+  font-size: 20px;
+  margin: 20px;
+  text-decoration: none;
+  color: white;
+  cursor: pointer;
+}
+
+nav a:hover{
+  color: rgb(202, 202, 202);
+}
+
+nav .sair:hover {
+  color: rgb(255, 1, 1);
+  font-weight: 500;
+}

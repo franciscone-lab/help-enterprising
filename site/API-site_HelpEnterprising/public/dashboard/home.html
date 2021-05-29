@@ -12,55 +12,26 @@
 
 <body onload=obterPublicacoes()>
 
-  <div>
-    <a href="cadastro-dados.html">Dados</a>
-    <a href="cadastro-empresa.html">Cadastro de Empresa</a>
-    <a href="publicar-post.html">Publicar</a>
-    <a href="#" onclick="logoff()">Sair</a>
-    <a href="cotacao.html">Cotação</a>
-    <a href="ajuda.html">Ajuda</a>
-  </div>
+  <nav>
+    <div class="nav-bar">
+      <a href="cadastro-dados.html">Dados</a>
+      <a href="cadastro-empresa.html">Cadastro de Empresas</a>
+      <a href="publicar-post.html">Publicar</a>
+      <a href="cotacao.html">Vendas</a>
+      <a href="ajuda.html">Ajuda</a>
+      <a href="#" onclick="logoff()">Sair</a>
+    </div>
+  </nav>
 
   <main>
-    <div>
-      <h3>Olá, <b id="nome_do_usuario"></b>, veja as notícias de hoje no mundo do empreendedorismo!</h3>
+    <div class="boas-vindas">
+      <h1>Olá, <span id="nome_do_usuario"></span>, veja o apanhado de notícias no mundo do empreendedorismo!</h1>
     </div>
     <div class="feed">
-      <h1>Publicações</h1>
-      <div id="feed_container" class="container">
+      <h2>Publicações</h2>
+      <div id="feed_container" class="container publi-cards">
       </div>
     </div>
-    <div class="publi-cards">
-      <div class="cards">
-        <h1>POST1</h1>
-        <hr>
-        <p>lorem ipsum dolor, lorem ipsum dolor, Lorem ipsum dolor sit, amet consectetur adipisicing elit. Consectetur
-          neque incidunt quisquam tenetur quo vitae, rerum itaque laboriosam, eius culpa et quidem nemo! Possimus amet
-          eum dolorem, architecto ullam id?</p>
-      </div>
-      <div class="cards">
-        <h1>POST2</h1>
-        <hr>
-        <p>lorem ipsum dolor, lorem ipsum dolor, Lorem ipsum dolor sit, amet consectetur adipisicing elit. Consectetur
-          neque incidunt quisquam tenetur quo vitae, rerum itaque laboriosam, eius culpa et quidem nemo! Possimus amet
-          eum dolorem, architecto ullam id?</p>
-      </div>
-      <div class="cards">
-        <h1>POST3</h1>
-        <hr>
-        <p>lorem ipsum dolor, lorem ipsum dolor, Lorem ipsum dolor sit, amet consectetur adipisicing elit. Consectetur
-          neque incidunt quisquam tenetur quo vitae, rerum itaque laboriosam, eius culpa et quidem nemo! Possimus amet
-          eum dolorem, architecto ullam id?</p>
-      </div>
-      <div class="cards">
-        <h1>POST4</h1>
-        <hr>
-        <p>lorem ipsum dolor, lorem ipsum dolor, Lorem ipsum dolor sit, amet consectetur adipisicing elit. Consectetur
-          neque incidunt quisquam tenetur quo vitae, rerum itaque laboriosam, eius culpa et quidem nemo! Possimus amet
-          eum dolorem, architecto ullam id?</p>
-      </div>
-    </div>
-
   </main>
 </body>
 
@@ -69,5 +40,5 @@
 <script type="text/javascript" src="../funcoes.js"></script>
 <script type="text/javascript" src="./js/post.js"></script>
 <script>
-      verificar_autenticacao();
+  verificar_autenticacao();
 </script>

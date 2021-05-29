@@ -49,42 +49,27 @@ function obterPublicacoes() {
 
 function atualizarFeed(publicacoes) {
     var feed = document.getElementById("feed_container");
-    console.log('TESTE');
+    console.log('Entrei na function para atualizar o feed!');
+    
     feed.innerHTML = "";
     for (let i = 0; i < publicacoes.length; i++) {
         var publicacao = publicacoes[i];
 
         var divPublicacao = document.createElement("div")
-        var divNome = document.createElement("div")
-        var divDescricao = document.createElement("div")
+        var tituloNome = document.createElement("h1")
+        var subtituloNome = document.createElement("h4")
+        var paragrafoDescricao = document.createElement("p")
 
-        divNome.innerHTML = `${publicacao.tituloPost}:`;
-        divDescricao.innerHTML += `${publicacao.textoPost} <br/><br/>`;
+        tituloNome.innerHTML = `${publicacao.tituloPost}`;
+        subtituloNome.innerHTML += `Autor: ${publicacao.nomeUsuario}<hr>`;
+        paragrafoDescricao.innerHTML += `${publicacao.textoPost}`;
 
-        divPublicacao.className = "publicacao"
-        divNome.className = "nome";
-        divDescricao.className = "descricao";
+        divPublicacao.className = "cards";
 
-        divPublicacao.appendChild(divNome);
-        divPublicacao.appendChild(divDescricao);
+        divPublicacao.appendChild(tituloNome);
+        divPublicacao.appendChild(subtituloNome);
+        divPublicacao.appendChild(paragrafoDescricao);
 
         feed.appendChild(divPublicacao);
     }
 }
-
-// function obterPublicacoesPorUsuario(idUsuario) {
-//   fetch(`/publicacoes/${idUsuario}`)
-//   .then(resposta => {
-//       if (resposta.ok) {
-//           resposta.json().then(function (resposta) {
-//               console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
-//               // alert(JSON.stringify(resposta))
-//           });
-//       } else {
-//           console.error('Nenhum dado encontrado ou erro na API');
-//       }
-//   })
-//   .catch(function (error) {
-//       console.error(`Erro na obtenção das publicações do usuário: ${error.message}`);
-//   });
-// }

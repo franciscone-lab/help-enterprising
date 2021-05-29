@@ -1,16 +1,56 @@
+nav{
+  background-color: green;
+  height: 60px;
+  border-radius: 0 0 5px 5px;
+}
+
+nav .nav-bar{
+  text-align: center;
+  padding: 1.5%;
+}
+
+nav a {
+  font-size: 20px;
+  margin: 20px;
+  text-decoration: none;
+  color: white;
+}
+
+nav a:hover{
+  font-size: 20.5px;
+  color: rgb(202, 202, 202);
+}
+
+.boas-vindas {
+  margin: 10px;
+  float: left;
+  margin-right: 25%;
+}
+
+h2 {
+  margin-left: 20px;
+}
+
 .publi-cards {
   display: flex;
   flex-direction: row;
-  text-align: center;
+  flex-wrap: wrap;
 }
 
 .publi-cards > .cards {
+  flex-grow: 1;
+  text-align: center;
   background-color: #008000;
-  margin: 10px;
   padding: 20px;
-  width: 100%;
+  margin: 10px;
+  width: 30%;
   border-radius: 10px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.cards p {
+  margin-top: 1%;
+  font-size: 25px;
 }
 
 .cards:hover {

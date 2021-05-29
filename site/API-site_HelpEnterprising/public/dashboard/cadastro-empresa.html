@@ -5,9 +5,11 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="../css/style.css"> 
+  <link rel="stylesheet" href="../css/style.css">
   <link rel="stylesheet" href="css/navbar.css">
-  <title>Cadastro Empresa | Help Enterprising</title>
+  <link rel="stylesheet" href="css/forms-empresa.css">
+  <link rel="shortcut icon" href="../img/target.ico" type="image/x-icon">
+  <title>Cadastro Empresas | Help Enterprising</title>
 </head>
 
 <body>
@@ -22,32 +24,34 @@
       <a href="#" onclick="logoff()" class="sair">Sair</a>
     </div>
   </nav>
-  
-  <form id="formCadastroEmpresa" onsubmit="return cadastrarEmpresa()" method="post">
-    <div class="card-form-cadastro">
-      CNPJ
-      <input type="text" name="cnpjEmpresa" class="input-padrao" autofocus="autofocus" placeholder="Nome e sobrenome">
 
-      Nome Fantasia
+  <form id="formCadastroEmpresa" class="cadastro-um" onsubmit="return cadastrarEmpresa()" method="post">
+    <div class="card-form-cadastro">
+      <h1>Faça aqui o cadastro da sua empresa!</h1>
+      <label for="cnpjEmpresa">CNPJ</label>
+      <input type="text" name="cnpjEmpresa" class="input-padrao" autofocus="autofocus" placeholder="Nome e sobrenome">
+      <label for="nomeFantasiaEmpresa">Nome Fantasia</label>
       <input type="text" name="nomeFantasiaEmpresa" class="input-padrao" autofocus="autofocus"
         placeholder="Nome e sobrenome">
     </div>
     <input type="submit" id="btn_entrar" value="Cadastrar" class="btn-green">
   </form>
 
-  <form id="formCadastroEndereco" onsubmit="return cadastrarEndereco()" style="display: none;" method="post">
-    Rua
-    <input type="text" name="ruaEndereco" class="input-padrao" autofocus="autofocus" placeholder="Nome e sobrenome">
-
-    Nº Endereço
-    <input type="text" name="numeroEndereco" class="input-padrao" autofocus="autofocus" placeholder="Nome e sobrenome">
-
-    CEP
-    <input type="text" name="cepEndereco" class="input-padrao" autofocus="autofocus" placeholder="Nome e sobrenome">
-
-    Complemento
-    <input type="text" name="complementoEndereco" class="input-padrao" autofocus="autofocus"
-      placeholder="Nome e sobrenome">
+  <form id="formCadastroEndereco" class="cadastro-dois" onsubmit="return cadastrarEndereco()" style="display: none;"
+    method="post">
+    <div class="card-form-cadastro">
+      <h1>Últimos passos...</h1>
+      <label for="ruaEndereco">Rua</label>
+      <input type="text" name="ruaEndereco" class="input-padrao" autofocus="autofocus" placeholder="Nome e sobrenome">
+      <label for="numeroEndereco">Número</label>
+      <input type="text" name="numeroEndereco" class="input-padrao" autofocus="autofocus"
+        placeholder="Nome e sobrenome">
+      <label for="cepEndereco">CEP</label>
+      <input type="text" name="cepEndereco" class="input-padrao" autofocus="autofocus" placeholder="Nome e sobrenome">
+      <label for="complementoEndereco">Complemento</label>
+      <input type="text" name="complementoEndereco" class="input-padrao" autofocus="autofocus"
+        placeholder="Nome e sobrenome">
+    </div>
     <input type="submit" id="btn_entrar" value="Cadastrar" class="btn-green">
   </form>
 
@@ -106,7 +110,7 @@
 
       if (response.ok) {
 
-          console.log("OK ENDEREÇO!");
+        console.log("OK ENDEREÇO!");
 
         // window.location.href = './home.html';
 

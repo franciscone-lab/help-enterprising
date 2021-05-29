@@ -1,3 +1,7 @@
+body {
+  background-color: #ecf0f1;
+}
+
 .vendas {
   display: flex;
   flex-direction: row;

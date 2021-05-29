@@ -1,11 +1,17 @@
+body {
+  background-color: #ecf0f1;
+}
+
 .boas-vindas {
   margin: 10px;
   float: left;
   margin-right: 25%;
+  color:  #016901;
 }
 
 h2 {
   margin-left: 20px;
+  color:  #016901;
 }
 
 .publi-cards {

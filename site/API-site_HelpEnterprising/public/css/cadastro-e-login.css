@@ -1,10 +1,4 @@
-/* PÁGINA DO CONTATO */
-
-.contato {
-    background-color: #ecf0f1;
-}
-
-.contato .container {
+    .contato .container {
     overflow: auto;
 }
 
@@ -35,15 +29,6 @@ form label, form p{
     cursor: pointer;
 }
 
-.imagem-lateral {
-    overflow: auto;
-}
-
-.contato img {
-    float: right;
-    width: 85%;
-}
-
 .input-padrao {
     display: block;
     margin-bottom: 20px;
@@ -58,7 +43,7 @@ form label, form p{
     margin-bottom: 30px;
 }
 
-/* PÁGINA DO LOGIN */
+/* LOGIN */
 
 .pag-login {
     background-color: #ecf0f1;
@@ -68,6 +53,7 @@ form label, form p{
 
 .pag-login h1 {
     margin-bottom: 40px;
+    color: #016901;
 }
 
 .pag-login .input-padrao {
@@ -82,7 +68,7 @@ form label, form p{
     padding: 60px 20px 0px 20px;
     border-radius: 20px;
     width: 400px;
-    margin-top: 100px;
+    margin-top: 70px;
 }
 
 .pag-login .btn-green {
@@ -103,7 +89,10 @@ form label, form p{
 }
 
 .extra .msg_erro {
-    background-color: sandybrown; 
-    color: black; 
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    background-color: green; 
+    color: white; 
     visibility: hidden;
 }

@@ -1,0 +1,43 @@
+body {
+  background-color: #ecf0f1;
+}
+
+form label {
+  display: block;
+  font-size: 25px;
+  margin-top: 10px;  
+  margin-bottom: 10px;   
+  color: white;
+}
+
+form input {
+  font-size: 20px;      
+  color:  #016901;
+  text-align: center;
+}
+
+.btn-green {
+  color: white;
+  background-color: green;
+  margin: 20px 0 50px 0;
+  border: 0;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.cadastro-um, .cadastro-dois{
+  text-align: center;
+  margin-top: 70px;
+}
+
+.cadastro-um .card-form-cadastro, .cadastro-dois .card-form-cadastro{
+  background-color: #008000;
+  border: 1px solid #003b00;
+  padding: 40px;
+  margin: 10px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  color: white;
+}

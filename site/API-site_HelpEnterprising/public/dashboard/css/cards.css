@@ -1,0 +1,46 @@
+body {
+  background-color: #ecf0f1;
+}
+
+.boas-vindas {
+  margin: 10px;
+  float: left;
+  margin-right: 25%;
+  color:  #016901;
+}
+
+h2 {
+  margin-left: 20px;
+  color:  #016901;
+}
+
+.publi-cards {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.publi-cards > .cards {
+  flex-grow: 1;
+  text-align: center;
+  background-color: #008000;
+  border: 1px solid #003b00;
+  padding: 20px;
+  margin: 10px;
+  width: 30%;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  color: white;
+}
+
+.cards p {
+  margin-top: 1%;
+  font-size: 25px;
+}
+
+.cards:hover {
+  background-color: #016301;
+  border-color: white;
+  cursor: pointer;
+  border-radius: 10px;
+}

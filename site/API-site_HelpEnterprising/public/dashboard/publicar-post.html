@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="css/navbar.css">
+  <link rel="stylesheet" href="css/forms.css">
+  <link rel="shortcut icon" href="../img/target.ico" type="image/x-icon">
+
+  <title>Publicar Post | Helo Enterprising</title>
+</head>
+
+<body>
+  <nav>
+    <div class="nav-bar">
+      <a href="home.html">Home</a>
+      <a href="cadastro-empresa.html">Cadastro de Empresas</a>
+      <a href="publicar-post.html">Publicar</a>
+      <a href="vendas.html">Vendas</a>
+      <a href="ajuda.html">Ajuda</a>
+      <a href="#" onclick="logoff()" class="sair">Sair</a>
+    </div>
+  </nav>
+  <main>
+    <div class="container">
+      <div class="post">
+        <h1>Faça uma publicação!</h1>
+        <div class="formulario-post">
+          <form id="form_publicar" method="post" onsubmit="return publicar()">
+            <label for="tituloPost">Título:</label>
+            <input type="text" required name="tituloPost">
+            <br><br>
+            <label for="textoPost">Post:</label>
+            <textarea rows="3" required cols="50" maxlength="100" class="textarea-padrao" name="textoPost"></textarea>
+            <br>
+            <button id="btn_publicar" class="btn-green">Publicar</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div id="div_cadastro_ok" class="box-sucess" style="display: none;">
+      <div class="box-login">
+        Parabéns!
+        <br><br>
+        Seu post foi publicado com sucesso!
+        <br><br>
+        <a class="btn-green" style="text-decoration: none" href="home.html">Voltar para home!</a>
+        <a class="btn-green" style="text-decoration: none" href="publicar-post.html">Fazer outro post!</a>
+      </div>
+    </div>
+  </main>
+</body>
+
+</html>
+
+<script type="text/javascript" src="../funcoes.js"></script>
+<script type="text/javascript" src="js/post.js"></script>

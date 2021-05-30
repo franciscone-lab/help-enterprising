@@ -5,12 +5,12 @@ var Leitura = require('../models').Leitura;
 var env = process.env.NODE_ENV || 'development';
 
 /* Recuperar as últimas N leituras */
-router.get('/ultimas/:idcaminhao', function(req, res, next) {
+router.get('/ultimas/:idmoeda', function(req, res, next) {
 	
 	// quantas são as últimas leituras que quer? 7 está bom?
 	const limite_linhas = 7;
 
-	var idcaminhao = req.params.idcaminhao;
+	var idcaminhao = req.params.idmoeda;
 
 	console.log(`Recuperando as ultimas ${limite_linhas} leituras`);
 	
@@ -18,7 +18,7 @@ router.get('/ultimas/:idcaminhao', function(req, res, next) {
 
 	if (env == 'dev') {
 		// abaixo, escreva o select de dados para o Workbench
-		instrucaoSql = `select 
+		instrucaoSql = `SELECT  
 		temperatura, 
 		umidade, 
 		momento,
@@ -52,7 +52,6 @@ router.get('/ultimas/:idcaminhao', function(req, res, next) {
 		res.status(500).send(erro.message);
 	});
 });
-
 
 router.get('/tempo-real/:idcaminhao', function(req, res, next) {
 	console.log('Recuperando caminhões');
@@ -107,6 +106,5 @@ router.get('/estatisticas', function (req, res, next) {
 		});
   
 });
-
 
 module.exports = router;

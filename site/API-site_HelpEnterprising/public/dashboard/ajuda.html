@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="css/navbar.css">
+  <link rel="stylesheet" href="css/forms.css">
+  <link rel="shortcut icon" href="../img/target.ico" type="image/x-icon">
+
+  <title>Ajuda | Help Enterprising</title>
+</head>
+
+<body>
+  <nav>
+    <div class="nav-bar">
+      <a href="home.html">Home</a>
+      <a href="cadastro-empresa.html">Cadastro de Empresas</a>
+      <a href="publicar-post.html">Publicar</a>
+      <a href="vendas.html">Vendas</a>
+      <a href="ajuda.html">Ajuda</a>
+      <a href="#" onclick="logoff()" class="sair">Sair</a>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="post">
+      <h1>Está com algum problema? Entre em contato com a gente!</h1>
+      <form id="formularioCadastroAjuda" method="post" onsubmit="return cadastrarAjuda()">
+        <label for="tituloFaleConosco">Título:</label>
+        <input type="text" name="tituloFaleConosco">
+        <br><br>
+        <label for="duvidaFaleConosco">Dúvida:</label>
+        <textarea id="" rows="3" cols="50" maxlength="100" class="textarea-padrao" name="duvidaFaleConosco"></textarea>
+        <br>
+        <button id="btn_publicar" class="btn-green">Enviar</button>
+      </form>
+    </div>
+  </div>
+  <div id="div_cadastro_ok" class="box-sucess" style="display: none;">
+    <div class="box-login">
+      Parabéns!
+      <br><br>
+      Sus dúvida foi enviada com sucesso!
+      <br><br>
+      <a class="btn-green" style="text-decoration: none" href="home.html">Voltar para home!</a>
+      <a class="btn-green" style="text-decoration: none" href="ajuda.html">Mandar outra dúvida</a>
+    </div>
+  </div>
+</body>
+
+</html>
+
+<script>
+  function cadastrarAjuda() {
+    // aguardar();
+    console.log("Entrei na function help-desk!")
+    var formularioAjuda = new URLSearchParams(new FormData(formularioCadastroAjuda));
+    var idUsuario = sessionStorage.id_usuario_meuapp;
+    fetch(`/usuarios/ajuda/${idUsuario}`, {
+      method: "POST",
+      body: formularioAjuda
+    }).then(function (response) {
+
+      if (response.ok) {
+
+        console.log("DEU CERTO!");
+        div_cadastro_ok.style.display = "block";
+
+      } else {
+
+        console.log('Erro de cadastro da ajuda!');
+        response.text().then(function (resposta) {
+          div_erro.innerHTML = resposta;
+        });
+        // finalizar_aguardar();
+      }
+    });
+
+    return false;
+  }
+</script>
+
+<script type="text/javascript" src="../funcoes.js"></script>

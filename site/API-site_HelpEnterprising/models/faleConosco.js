@@ -2,8 +2,8 @@
 
 module.exports = (sequelize, DataTypes) => {
   let faleConosco = sequelize.define('faleConosco', {
-    tituloFaleConosco: {
-      field: 'tituloFaleConosco',
+    idFaleConosco: {
+      field: 'idFaleConosco',
       type: DataTypes.INTEGER,
       primaryKey: true,
       autoIncrement: true
@@ -29,7 +29,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   },
     {
-      tableName: 'feleConosco',
+      tableName: 'faleConosco',
       freezeTableName: true,
       underscored: true,
       timestamps: false,

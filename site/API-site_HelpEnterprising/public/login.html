@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="./css/navbar.css">
   <link rel="stylesheet" href="./css/index.css">
   <link rel="stylesheet" href="./css/footer.css">
-  <link rel="stylesheet" href="./css/contato-e-login.css">
+  <link rel="stylesheet" href="./css/cadastro-e-login.css">
 
   <link rel="shortcut icon" href="./img/target.ico" type="image/x-icon">
   <title>Login | Help Enterprising</title>
@@ -30,22 +30,19 @@
         <div class="box-login">
           <h1>Login</h1>
           <form id="form_login" method="post" onsubmit="return entrar()">
-            Usuário:
-            <input type="text" class="input-padrao" name="loginUsuario">
-            <br>
-            Senha:
-            <input type="password" class="input-padrao" name="senhaUsuario">
-            <br>
+
+            <label for="loginUsuario">Usuário</label>
+            <input type="text" class="input-padrao" name="loginUsuario" required>
+            <label for="senhaUsuario">Senha</label>
+            <input type="password" class="input-padrao" name="senhaUsuario" required> 
             <button id="btn_entrar" class="btn-green">Entrar</button>
           </form>
 
           <div class="extra">
             <div id="div_erro" class="msg_erro">
             </div>
-
-            <img src="aguarde-orange.gif" id="img_aguarde">
+            <img src="aguarde-green.gif" id="img_aguarde">
             <!--style="display: none;"-->
-
           </div>
         </div>
       </div>
@@ -70,7 +67,6 @@
           sessionStorage.login_usuario_meuapp = json.loginUsuario;
           sessionStorage.nome_usuario_meuapp = json.nomeUsuario;
           sessionStorage.id_usuario_meuapp = json.idUsuario;
-
           window.location.href = './dashboard/home.html';
         });
 

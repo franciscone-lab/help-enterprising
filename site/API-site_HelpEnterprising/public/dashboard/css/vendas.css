@@ -1,0 +1,68 @@
+body {
+  background-color: #ecf0f1;
+}
+
+.vendas {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.vendas > .cards {
+  flex-grow: 1;
+  text-align: center;
+  background-color: #008000;
+  border: 1px solid #003b00;
+  padding: 20px;
+  margin: 10px;
+  width: 30%;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  color: white;
+}
+
+.graph {
+  height: 300px;
+  margin: 10px;
+  padding: 5px;
+}
+
+.dois-graph {
+  display: flex;
+  flex-direction: row;
+  height: 300px;
+  width: 50%;
+  margin: 10px;
+  padding: 5px;
+}
+
+.cards input {
+  font-size: 20px;
+  align-items: justify;
+  color: #003b00;
+}
+
+.botaovendas {
+  color: #003b00;
+  font-size: 17px;
+  padding: 10px;
+  margin: 5px;
+  border-radius: 5px;
+  background-color:white;
+  border: none;
+}
+
+label {
+  font-size: 18px;
+}
+
+.botaovendas:hover {
+  background-color:rgb(189, 189, 189);
+  cursor: pointer;
+}
+
+#div_nota_fiscal {
+  background-color: rgb(223, 223, 223);
+  color: #003b00;
+  border-radius: 5px;
+}

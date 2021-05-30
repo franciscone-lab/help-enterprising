@@ -1,0 +1,63 @@
+body {
+  background-color: #ecf0f1;
+}
+
+form label {
+  display: block;
+  font-size: 25px;
+  margin-top: 10px;  
+  margin-bottom: 10px;   
+  color: white;
+}
+
+form input {
+  font-size: 20px;      
+  color: #016901;
+  padding: 10px;
+}
+
+.box-sucess {
+  height: 450px;
+  z-index: 9999;
+  position: absolute;
+  left: 30%;
+  top: 30%;
+}
+
+.box-login {
+  display: inline-block;
+  background-color: white;
+  box-shadow:  3px 3px 5px 2px rgb(0, 0, 0);
+  padding: 20px 20px 20px 20px;
+  border-radius: 20px;
+  text-align: center;
+  width: 480px;
+  margin-top: 70px;
+}
+
+.btn-green {
+  color: white;
+  background-color: green;
+  margin: 20px 0 50px 0;
+  border: 0;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.cadastro-um, .cadastro-dois{
+  text-align: center;
+  margin-top: 70px;
+  z-index: 1;
+}
+
+.cadastro-um .card-form-cadastro, .cadastro-dois .card-form-cadastro{
+  background-color: #008000;
+  border: 1px solid #003b00;
+  padding: 40px;
+  margin: 10px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  color: white;
+}

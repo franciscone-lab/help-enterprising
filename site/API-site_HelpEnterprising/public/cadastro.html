@@ -26,51 +26,76 @@
     </nav>
     <div class="pag-login">
         <div class="container">
-            <div class="box-login">
+            <div class="box-login" id="boxFormCadastroUsuario">
                 <h1>Faça aqui seu cadastro!</h1>
                 <form id="formCadastroUsuario" method="post" onsubmit="return cadastrarUsuario()">
-                    Nome completo
+
+                    <label for="nomeUsuario">Nome completo</label>
                     <input type="text" name="nomeUsuario" class="input-padrao" autofocus="autofocus"
                         placeholder="Nome e sobrenome" required minlength="4">
 
-                    Login
+                    <label for="loginUsuario">Usuário</label>
                     <input type="text" name="loginUsuario" class="input-padrao" autofocus="autofocus"
                         placeholder="Login" required minlength="4">
-                    <br>
-                    Senha
+
+                    <label for="senhaUsuario">Senha</label>
                     <input type="password" name="senhaUsuario" class="input-padrao" placeholder="***************"
                         required minlength="4">
-                    <br>
-                    CPF
+
+                    <label for="cpfUsuario">CPF</label>
                     <input type="text" name="cpfUsuario" class="input-padrao" autofocus="autofocus"
                         placeholder="Nome e sobrenome" required minlength="4">
-                    <br>
-                    Email
+
+                    <label for="emailUsuario">Email</label>
                     <input type="text" name="emailUsuario" class="input-padrao" autofocus="autofocus"
                         placeholder="Nome e sobrenome" required minlength="4">
-                    <br>
-                    Sexo
+                    <label for="sexoUsuario">Sexo</label>
                     <input type="text" name="sexoUsuario" class="input-padrao" autofocus="autofocus"
                         placeholder="Nome e sobrenome" required>
 
-                    <input type="submit" id="btn_entrar" value="Cadastrar" class="btn-green">
-                    <br>
+                    <input type="submit" id="btn_prosseguir" value="Cadastrar" class="btn-green">
                 </form>
+
             </div>
 
-            <!-- <img src="aguarde-orange.gif" id="img_aguarde" style="display: none; width:100px">
+            <div class="box-login" id="boxFormCadastroTelefone" style="display: none;">
+                <h1>Só vamos cadastrar mais umas informações e pronto!</h1>
+                <form id="formCadastroTelefone" onsubmit="return cadastrarTelefone()" method="post">
+                    <label for="dddTelefone">DDD</label>
+                    <input type="number" maxlength="3" max="3" size="3" name="dddTelefone" class="input-padrao" autofocus="autofocus"
+                        placeholder="Nome e sobrenome" >
 
-                <div id="div_erro" style="background-color: sandybrown; color: maroon; display: none;">
-                    Erro no cadastro
-                </div> -->
+                    <label for="numeroTelefone">Numero</label>
+                    <input type="number" name="numeroTelefone" class="input-padrao" autofocus="autofocus"
+                        placeholder="Nome e sobrenome">
 
+                    <input type="submit" id="btn_entrar" value="Cadastrar" class="btn-green">
+                </form>
+
+            </div>
+
+            <img src="aguarde-orange.gif" id="img_aguarde" style="display: none; width:100px">
+
+            <div id="div_erro" style="background-color: sandybrown; color: maroon; display: none;">
+                Erro no cadastro
+            </div>
+
+            <div id="div_cadastro_ok" style="display: none;">
+                <div class="box-login">
+                    Parabéns!
+                    <br><br>
+                    Seu cadastro foi concluído com sucesso!
+                    <br><br>
+                    <a class="btn-green" style="text-decoration: none" href="login.html">Prosseguir!</a>
+                </div>
+            </div>
         </div>
 
     </div>
     <footer>
-        <h3>Developed by <a href="https://github.com/franciscone-facul" target="_blank">Matheus Franciscone</a>, um aluno <a
-            href="https://github.com/BandTec" target="_blank">BandTec!</a> &#128516;</h3>
-      </footer>
+        <h3>Developed by <a href="https://github.com/franciscone-facul" target="_blank">Matheus Franciscone</a>, um
+            aluno <a href="https://github.com/BandTec" target="_blank">BandTec!</a> &#128516;</h3>
+    </footer>
 </body>
 
 </html>
@@ -87,7 +112,17 @@
 
             if (response.ok) {
 
-                window.location.href = 'login.html';
+                response.json().then(json => {
+
+                    sessionStorage.id_usuario_meuapp = json.idUsuario;
+                    console.log("OK! TESTE");
+
+                    boxFormCadastroUsuario.style.display = 'none';
+                    boxFormCadastroTelefone.style.display = 'block';
+
+                });
+
+                // window.location.href = 'login.html';
 
             } else {
 
@@ -113,5 +148,33 @@
     //     img_aguarde.style.display = 'none';
     //     div_erro.style.display = 'block';
     // }
+    function cadastrarTelefone() {
+        // aguardar();
+        console.log("Entrei na function!")
+        var formularioTelefone = new URLSearchParams(new FormData(formCadastroTelefone));
+        var idUsuario = sessionStorage.id_usuario_meuapp;
+        fetch(`/usuarios/telefone/${idUsuario}`, {
+            method: "POST",
+            body: formularioTelefone
+        }).then(function (response) {
 
+            if (response.ok) {
+
+                console.log('TUDO OK');
+                sessionStorage.clear();
+                boxFormCadastroTelefone.style.display = 'none';
+                div_cadastro_ok.style.display = 'block';
+
+            } else {
+
+                console.log('Erro de cadastro do telefone!');
+                response.text().then(function (resposta) {
+                    // div_erro.innerHTML = resposta;
+                });
+                // finalizar_aguardar();
+            }
+        });
+
+        return false;
+    }
 </script>

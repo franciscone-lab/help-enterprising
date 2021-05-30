@@ -1,4 +1,4 @@
-    .contato .container {
+.contato .container {
     overflow: auto;
 }
 
@@ -48,7 +48,7 @@ form label, form p{
 .pag-login {
     background-color: #ecf0f1;
     text-align: center;
-    padding: 50px 0;
+    padding: 40px;
 }
 
 .pag-login h1 {
@@ -65,7 +65,7 @@ form label, form p{
     display: inline-block;
     background-color: white;
     box-shadow:  3px 3px 5px 2px #ccc;
-    padding: 60px 20px 0px 20px;
+    padding: 20px 20px 20px 20px;
     border-radius: 20px;
     width: 400px;
     margin-top: 70px;

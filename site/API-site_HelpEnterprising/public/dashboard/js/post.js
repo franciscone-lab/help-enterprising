@@ -12,6 +12,7 @@ function publicar() {
         if (resposta.ok) {
             // obterPublicacoes();
             console.log('CERTOOOOOOOOOOOOOOOOOOO!!!')
+            div_cadastro_ok.style.display = 'block';
             //   finalizarAguardar();
         } else {
             console.log('Erro ao publicar!');

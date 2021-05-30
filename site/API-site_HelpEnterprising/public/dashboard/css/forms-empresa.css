@@ -12,8 +12,27 @@ form label {
 
 form input {
   font-size: 20px;      
-  color:  #016901;
+  color: #016901;
+  padding: 10px;
+}
+
+.box-sucess {
+  height: 450px;
+  z-index: 9999;
+  position: absolute;
+  left: 30%;
+  top: 30%;
+}
+
+.box-login {
+  display: inline-block;
+  background-color: white;
+  box-shadow:  3px 3px 5px 2px rgb(0, 0, 0);
+  padding: 20px 20px 20px 20px;
+  border-radius: 20px;
   text-align: center;
+  width: 480px;
+  margin-top: 70px;
 }
 
 .btn-green {
@@ -30,6 +49,7 @@ form input {
 .cadastro-um, .cadastro-dois{
   text-align: center;
   margin-top: 70px;
+  z-index: 1;
 }
 
 .cadastro-um .card-form-cadastro, .cadastro-dois .card-form-cadastro{

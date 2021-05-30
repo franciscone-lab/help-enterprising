@@ -25,62 +25,67 @@
         </ul>
     </nav>
     <div class="pag-login">
-        <div class="container">
-            <div class="box-login" id="boxFormCadastroUsuario">
+        <div class="container" id="boxFormCadastroUsuario">
+            <div class="box-login">
                 <h1>Faça aqui seu cadastro!</h1>
                 <form id="formCadastroUsuario" method="post" onsubmit="return cadastrarUsuario()">
 
                     <label for="nomeUsuario">Nome completo</label>
-                    <input type="text" name="nomeUsuario" class="input-padrao" autofocus="autofocus"
-                        placeholder="Nome e sobrenome" required minlength="4">
+                    <input type="text" id="input_nome_usuario" name="nomeUsuario" class="input-padrao" required
+                        autofocus="autofocus" placeholder="Nome e sobrenome" minlength="3">
 
                     <label for="loginUsuario">Usuário</label>
-                    <input type="text" name="loginUsuario" class="input-padrao" autofocus="autofocus"
-                        placeholder="Login" required minlength="4">
+                    <input type="text" id="input_login_usuario" required name="loginUsuario" class="input-padrao"
+                        autofocus="autofocus" placeholder="Login" minlength="4" maxlength="20">
 
                     <label for="senhaUsuario">Senha</label>
-                    <input type="password" name="senhaUsuario" class="input-padrao" placeholder="***************"
-                        required minlength="4">
+                    <input type="password" id="input_senha_usuario" name="senhaUsuario" class="input-padrao" required
+                        placeholder="********" minlength="8" maxlength="8">
 
                     <label for="cpfUsuario">CPF</label>
-                    <input type="text" name="cpfUsuario" class="input-padrao" autofocus="autofocus"
-                        placeholder="Nome e sobrenome" required minlength="4">
+                    <input type="text" name="cpfUsuario" required id="input_cpf_usuario" class="input-padrao"
+                        autofocus="autofocus" placeholder="XXX.XXX.XXX-XX" minlength="11" maxlength="11">
 
                     <label for="emailUsuario">Email</label>
-                    <input type="text" name="emailUsuario" class="input-padrao" autofocus="autofocus"
-                        placeholder="Nome e sobrenome" required minlength="4">
+                    <input type="email" name="emailUsuario" required id="input_email_usuario" class="input-padrao"
+                        autofocus="autofocus" placeholder="seuemail@email.com" minlength="4">
+
                     <label for="sexoUsuario">Sexo</label>
-                    <input type="text" name="sexoUsuario" class="input-padrao" autofocus="autofocus"
-                        placeholder="Nome e sobrenome" required>
+                    <select name="sexoUsuario" id="input_sexo_usuario" required class="input-padrao">
+                        <option value="M">Masculino</option>
+                        <option value="F">Feminino</option>
+                        <option value="N">Não Informar</option>
+                    </select>
 
                     <input type="submit" id="btn_prosseguir" value="Cadastrar" class="btn-green">
                 </form>
 
             </div>
-
-            <div class="box-login" id="boxFormCadastroTelefone" style="display: none;">
+        </div>
+        <div class="container" id="boxFormCadastroTelefone" style="display: none;" >
+            <div class="box-login box-telefone" >
                 <h1>Só vamos cadastrar mais umas informações e pronto!</h1>
                 <form id="formCadastroTelefone" onsubmit="return cadastrarTelefone()" method="post">
                     <label for="dddTelefone">DDD</label>
-                    <input type="number" maxlength="3" max="3" size="3" name="dddTelefone" class="input-padrao" autofocus="autofocus"
-                        placeholder="Nome e sobrenome" >
+                    <input type="number" name="dddTelefone" class="input-padrao" autofocus="autofocus" placeholder="XX"
+                        step="1" min="0" max="99">
 
                     <label for="numeroTelefone">Numero</label>
-                    <input type="number" name="numeroTelefone" class="input-padrao" autofocus="autofocus"
-                        placeholder="Nome e sobrenome">
+                    <input type="number" name="numeroTelefone" class="input-padrao" autofocus="autofocus" step="1"
+                        max="999999999" placeholder="XXXXX-XXXX">
 
                     <input type="submit" id="btn_entrar" value="Cadastrar" class="btn-green">
                 </form>
 
             </div>
-
-            <img src="aguarde-orange.gif" id="img_aguarde" style="display: none; width:100px">
+        </div>
+            <img src="aguarde-green.gif" id="img_aguarde" style="display: none; width:100px">
 
             <div id="div_erro" style="background-color: sandybrown; color: maroon; display: none;">
                 Erro no cadastro
             </div>
 
-            <div id="div_cadastro_ok" style="display: none;">
+            <div id="div_cadastro_ok" class="box-sucess" style="display: none;">
                 <div class="box-login">
                     Parabéns!
                     <br><br>
@@ -100,10 +105,10 @@
 
 </html>
 
-<script>
 
+<script>
     function cadastrarUsuario() {
-        // aguardar();
+
         var formulario = new URLSearchParams(new FormData(formCadastroUsuario));
         fetch("/usuarios/usuario", {
             method: "POST",
@@ -122,34 +127,19 @@
 
                 });
 
-                // window.location.href = 'login.html';
-
             } else {
 
                 console.log('Erro de cadastro!');
                 response.text().then(function (resposta) {
                     div_erro.innerHTML = resposta;
                 });
-                // finalizar_aguardar();
             }
         });
 
         return false;
     }
 
-    // function aguardar() {
-    //     btn_entrar.disabled = true;
-    //     img_aguarde.style.display = 'block';
-    //     div_erro.style.display = 'none';
-    // }
-
-    // function finalizar_aguardar() {
-    //     btn_entrar.disabled = false;
-    //     img_aguarde.style.display = 'none';
-    //     div_erro.style.display = 'block';
-    // }
     function cadastrarTelefone() {
-        // aguardar();
         console.log("Entrei na function!")
         var formularioTelefone = new URLSearchParams(new FormData(formCadastroTelefone));
         var idUsuario = sessionStorage.id_usuario_meuapp;
@@ -162,16 +152,15 @@
 
                 console.log('TUDO OK');
                 sessionStorage.clear();
-                boxFormCadastroTelefone.style.display = 'none';
                 div_cadastro_ok.style.display = 'block';
 
             } else {
 
                 console.log('Erro de cadastro do telefone!');
                 response.text().then(function (resposta) {
-                    // div_erro.innerHTML = resposta;
+                    div_erro.innerHTML = resposta;
                 });
-                // finalizar_aguardar();
+
             }
         });
 

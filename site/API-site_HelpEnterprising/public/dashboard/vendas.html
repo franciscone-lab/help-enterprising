@@ -4,13 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vendas | Help Enterprising</title>
-
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="shortcut icon" href="../img/target.ico" type="image/x-icon">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="css/navbar.css">
     <link rel="stylesheet" href="css/vendas.css">
+
+    <title>Vendas | Help Enterprising</title>
 </head>
 
 <body>
@@ -36,10 +36,10 @@
             <h1>Registro de Vendas + Nota Fiscal</h1>
             <br>
             <label for="input_produto">Produto:</label>
-            <input id="input_produto">
+            <input required id="input_produto">
             <br><br>
             <label for="input_valor_produto"> Valor:</label>
-            <input type="number" id="input_valor_produto">
+            <input type="number" required id="input_valor_produto">
             <br><br>
             <button onclick="cadastrarVenda()" class="botaovendas">Cadastrar Venda</button>
             <button onclick="listarVendas()" class="botaovendas">Ver nota Fiscal</button>
@@ -55,10 +55,9 @@
             </div>
         </div>
     </div>
-
-
 </body>
 
 </html>
 
 <script src="js/vendas.js"></script>
+<script type="text/javascript" src="../funcoes.js"></script>

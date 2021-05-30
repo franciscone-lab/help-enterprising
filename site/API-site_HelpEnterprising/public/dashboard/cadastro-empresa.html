@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="css/navbar.css">
   <link rel="stylesheet" href="css/forms-empresa.css">
   <link rel="shortcut icon" href="../img/target.ico" type="image/x-icon">
+
   <title>Cadastro Empresas | Help Enterprising</title>
 </head>
 
@@ -28,10 +29,11 @@
     <div class="card-form-cadastro">
       <h1>Faça aqui o cadastro da sua empresa!</h1>
       <label for="cnpjEmpresa">CNPJ</label>
-      <input type="text" name="cnpjEmpresa" class="input-padrao" autofocus="autofocus" placeholder="Nome e sobrenome">
+      <input type="text" name="cnpjEmpresa" required class="input-padrao" autofocus="autofocus"
+        placeholder="XX.XXX.XXX/XXXX-XX" minlength="15" maxlength="15">
       <label for="nomeFantasiaEmpresa">Nome Fantasia</label>
-      <input type="text" name="nomeFantasiaEmpresa" class="input-padrao" autofocus="autofocus"
-        placeholder="Nome e sobrenome">
+      <input type="text" name="nomeFantasiaEmpresa" required class="input-padrao" autofocus="autofocus"
+        placeholder="Nome da Empresa">
     </div>
     <input type="submit" id="btn_entrar" value="Cadastrar" class="btn-green">
   </form>
@@ -41,18 +43,28 @@
     <div class="card-form-cadastro">
       <h1>Últimos passos...</h1>
       <label for="ruaEndereco">Rua</label>
-      <input type="text" name="ruaEndereco" class="input-padrao" autofocus="autofocus" placeholder="Nome e sobrenome">
+      <input type="text" name="ruaEndereco" class="input-padrao" required autofocus="autofocus" placeholder="Rua">
       <label for="numeroEndereco">Número</label>
-      <input type="text" name="numeroEndereco" class="input-padrao" autofocus="autofocus"
-        placeholder="Nome e sobrenome">
+      <input type="text" name="numeroEndereco" class="input-padrao" required autofocus="autofocus" placeholder="Nº XX">
       <label for="cepEndereco">CEP</label>
-      <input type="text" name="cepEndereco" class="input-padrao" autofocus="autofocus" placeholder="Nome e sobrenome">
+      <input type="text" name="cepEndereco" minlength="8" maxlength="8" class="input-padrao" required autofocus="autofocus" placeholder="XXXXX-XXX">
       <label for="complementoEndereco">Complemento</label>
       <input type="text" name="complementoEndereco" class="input-padrao" autofocus="autofocus"
-        placeholder="Nome e sobrenome">
+        placeholder="Complemento de Endereço">
     </div>
     <input type="submit" id="btn_entrar" value="Cadastrar" class="btn-green">
   </form>
+
+  <div id="div_cadastro_ok" class="box-sucess" style="display: none;">
+    <div class="box-login">
+      Parabéns!
+      <br><br>
+      O cadastro da sua empresa foi concluído com sucesso!
+      <br><br>
+      <a class="btn-green" style="text-decoration: none" href="home.html">Voltar para home!</a>
+      <a class="btn-green" style="text-decoration: none" href="cadastro-empresa.html">Cadastrar mais empresas</a>
+    </div>
+  </div>
 
   </div>
   </form>
@@ -110,7 +122,7 @@
       if (response.ok) {
 
         console.log("OK ENDEREÇO!");
-
+        div_cadastro_ok.style.display = "block";
         // window.location.href = './home.html';
 
       } else {
@@ -126,3 +138,5 @@
     return false;
   }
 </script>
+
+<script type="text/javascript" src="../funcoes.js"></script>

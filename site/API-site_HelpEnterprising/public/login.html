@@ -32,16 +32,16 @@
           <form id="form_login" method="post" onsubmit="return entrar()">
 
             <label for="loginUsuario">Usuário</label>
-            <input type="text" class="input-padrao" name="loginUsuario">
+            <input type="text" class="input-padrao" name="loginUsuario" required>
             <label for="senhaUsuario">Senha</label>
-            <input type="password" class="input-padrao" name="senhaUsuario"> 
+            <input type="password" class="input-padrao" name="senhaUsuario" required> 
             <button id="btn_entrar" class="btn-green">Entrar</button>
           </form>
 
           <div class="extra">
             <div id="div_erro" class="msg_erro">
             </div>
-            <img src="aguarde-orange.gif" id="img_aguarde">
+            <img src="aguarde-green.gif" id="img_aguarde">
             <!--style="display: none;"-->
           </div>
         </div>

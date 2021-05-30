@@ -13,6 +13,26 @@ body {
     margin-bottom:50px;
 }
 
+.box-sucess {
+    height: 450px;
+    z-index: 9999;
+    position: absolute;
+    left: 30%;
+    top: 30%;
+  }
+  
+  .box-login {
+    display: inline-block;
+    background-color: white;
+    box-shadow:  3px 3px 5px 2px rgb(0, 0, 0);
+    padding: 20px 20px 20px 20px;
+    border-radius: 20px;
+    text-align: center;
+    width: 480px;
+    margin-top: 70px;
+  }
+  
+
 form label {
     display: block;
     font-size: 40px;

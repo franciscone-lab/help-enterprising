@@ -6,13 +6,18 @@ function cadastrarVenda() {
   let nomeProduto = input_produto.value;
   let valorProduto = Number(input_valor_produto.value);
 
-  listaProdutosVendidos.push(nomeProduto);
-  listaValoresProdutosVendidos.push(valorProduto);
-  vendas++;
+  if (nomeProduto == "" && valorProduto == "") {
+    alert("Digite o nome e o valor do produto para cadastrar a venda!");
+  } else {
+    listaProdutosVendidos.push(nomeProduto);
+    listaValoresProdutosVendidos.push(valorProduto);
+    vendas++;
 
-  console.log(listaProdutosVendidos);
-  console.log(listaValoresProdutosVendidos);
-  console.log(vendas);
+    console.log(listaProdutosVendidos);
+    console.log(listaValoresProdutosVendidos);
+    console.log(vendas);
+  }
+
 }
 
 function listarVendas() {

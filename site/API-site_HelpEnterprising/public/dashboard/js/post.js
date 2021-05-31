@@ -1,5 +1,4 @@
 function publicar() {
-    console.log("entrei!")
     //   aguardar();
     var formulario = new URLSearchParams(new FormData(form_publicar));
     var idUsuario = sessionStorage.id_usuario_meuapp;
@@ -10,10 +9,7 @@ function publicar() {
     }).then(resposta => {
 
         if (resposta.ok) {
-            // obterPublicacoes();
-            console.log('CERTOOOOOOOOOOOOOOOOOOO!!!')
             div_cadastro_ok.style.display = 'block';
-            //   finalizarAguardar();
         } else {
             console.log('Erro ao publicar!');
             resposta.text().then(texto => {

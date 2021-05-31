@@ -120,7 +120,6 @@
                 response.json().then(json => {
 
                     sessionStorage.id_usuario_meuapp = json.idUsuario;
-                    console.log("OK! TESTE");
 
                     boxFormCadastroUsuario.style.display = 'none';
                     boxFormCadastroTelefone.style.display = 'block';
@@ -140,7 +139,7 @@
     }
 
     function cadastrarTelefone() {
-        console.log("Entrei na function!")
+        console.log("Entrei no cadastro de telefone!")
         var formularioTelefone = new URLSearchParams(new FormData(formCadastroTelefone));
         var idUsuario = sessionStorage.id_usuario_meuapp;
         fetch(`/usuarios/telefone/${idUsuario}`, {

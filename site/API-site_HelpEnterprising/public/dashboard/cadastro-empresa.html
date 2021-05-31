@@ -75,7 +75,7 @@
 <script>
   function cadastrarEmpresa() {
     // aguardar();
-    console.log("Entrei na function!")
+    console.log("Entrei na function de cadastrar empresa!")
     var formularioEmpresa = new URLSearchParams(new FormData(formCadastroEmpresa));
     var idUsuario = sessionStorage.id_usuario_meuapp;
     fetch(`/empresas/empresa/${idUsuario}`, {

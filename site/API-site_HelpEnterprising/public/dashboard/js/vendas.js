@@ -12,10 +12,6 @@ function cadastrarVenda() {
     listaProdutosVendidos.push(nomeProduto);
     listaValoresProdutosVendidos.push(valorProduto);
     vendas++;
-
-    console.log(listaProdutosVendidos);
-    console.log(listaValoresProdutosVendidos);
-    console.log(vendas);
   }
 
 }

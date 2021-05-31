@@ -30,7 +30,7 @@ FOREIGN KEY(fkUsuario) REFERENCES usuario(idUsuario)
 CREATE TABLE post (
 idPost INT PRIMARY KEY AUTO_INCREMENT,
 tituloPost VARCHAR(45),
-textoPost VARCHAR(200),
+textoPost VARCHAR(50),
 fkUsuario INT,
 FOREIGN KEY(fkUsuario) REFERENCES usuario(idUsuario)
 );
